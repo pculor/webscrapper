@@ -1,0 +1,37 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: webscrapper
+
+frameworkVersion: "3"
+
+package:
+  exclude:
+    - node_modules/puppeteer/.local-chromium/**
+
+plugins:
+  - serverless-prune-plugin
+  - serverless-offline
+  - serverless-plugin-typescript
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+# The `functions` block defines what code to deploy
+functions:
+  webScrapper:
+    handler: src/scrapweb.handler
+    timeout: 603
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: datalog
+          method: post
+          cors: true

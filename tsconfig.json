@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "rootDir": ".",
+    "moduleResolution": "node10",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@tests/*": ["tests/*"],
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" }
+    ],
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "sourceRoot": "/",
+    "inlineSources": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+  },
+  "include": ["./**/*.ts", "src/config/winston.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".vscode/**/*"
+    ]
+}

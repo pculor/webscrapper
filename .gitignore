@@ -1,0 +1,18 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+
+.env
+.env.test
+config/.env
+dump.rdb
+dump.js
+dump.json
+web3doc.js
+node_modules
+dist
+lib/

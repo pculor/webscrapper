@@ -1,0 +1,54 @@
+{
+  "name": "webscrapper",
+  "version": "1.0.0",
+  "description": "webscrapper assessment",
+  "main": "dist/src/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "npm run clean && npm run build-src",
+    "build-src": "tspc",
+    "serve": "TS_NODE_BASEURL=./dist node -r tsconfig-paths/register dist/src/index.js",
+    "start": "NODE_ENV=production npm run build && npm run serve",
+    "src": "tsc",
+    "dev": "NODE_ENV=development npm run build && npm run serve",
+    "local": "sls offline",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix",
+    "test": "jest",
+    "format": "npx prettier --write .",
+    "watch": "nodemon",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check --watch"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.133",
+    "@types/node": "^20.11.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4",
+    "serverless-offline": "^13.3.3",
+    "serverless-plugin-typescript": "^2.1.5",
+    "serverless-prune-plugin": "^2.0.2",
+    "ts-patch": "^3.1.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.3",
+    "typescript-transform-paths": "^3.4.6"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "Ulor Pascal",
+  "license": "ISC",
+  "dependencies": {
+    "@serverless-chrome/lambda": "^1.0.0-57.2",
+    "aws-lambda": "^1.0.7",
+    "dotenv": "^16.4.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "puppeteer": "^21.9.0",
+    "superagent": "^8.1.2"
+  }
+}
