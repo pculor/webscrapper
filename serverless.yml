@@ -18,6 +18,7 @@ plugins:
   - serverless-offline
   - serverless-plugin-typescript
 
+
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws

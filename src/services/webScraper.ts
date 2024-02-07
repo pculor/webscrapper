@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
 import databaseQuery from '../models/databaseConnection';
 import dotenv from 'dotenv';
 
@@ -8,10 +8,15 @@ const { databaseConnection } = databaseQuery;
 
 
 export const webScrapper = async (siteUrl) => {
-	const browser = await puppeteer.launch({
-		headless: false,
-		defaultViewport: null,
-		executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+	const browser = await chromium.puppeteer.launch({
+		args: chromium.args,
+		defaultViewport: chromium.defaultViewport,
+		executablePath: await chromium.executablePath,
+		headless: chromium.headless,
+		ignoreHTTPSErrors: true,
+		// headless: false,
+		// defaultViewport: null,
+		// executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
 	});
 	const page = await browser.newPage();
 	await page.goto(siteUrl, {
